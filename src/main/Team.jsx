@@ -8,6 +8,7 @@ import MatchSmallCard from "./components/MatchSmallCard";
 import Grid from "@material-ui/core/Grid";
 
 import { BK } from "../common/constants";
+import NotFound from "./components/NotFound";
 
 const userStyles = makeStyles((theme) => ({
   root: {
@@ -35,29 +36,35 @@ const Team = (props) => {
   [teamName] // important: this lets navigate routes when this field change
   );
 
+  const displayMatchSynopses = () => (
+    teamData.matchSynopses 
+      ? (
+        <React.Fragment>
+          <Grid key={uuid4()} item xs={12}>
+            <MatchDetailsCard teamName={teamData.name} match={teamData.matchSynopses[0]} />
+          </Grid>
+          {
+              teamData.matchSynopses
+                  .slice(1)
+                  .map((match) => (
+                      <Grid key={uuid4()} item xs={12} sm={6} md={4}>
+                          <MatchSmallCard teamName={teamData.name} match={match} />
+                      </Grid>
+                      )
+                  )
+          }
+        </React.Fragment>
+      )
+      : <NotFound />
+  );
+
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
         <Grid key={uuid4()} item xs={12}>
           <Typography variant="h3">{teamData.name}</Typography>
         </Grid>
-        {teamData.matchSynopses && (
-          <React.Fragment>
-            <Grid key={uuid4()} item xs={12}>
-              <MatchDetailsCard teamName={teamData.name} match={teamData.matchSynopses[0]} />
-            </Grid>
-            {
-                teamData.matchSynopses
-                    .slice(1)
-                    .map((match) => (
-                        <Grid key={uuid4()} item xs={12} sm={6} md={4}>
-                            <MatchSmallCard teamName={teamData.name} match={match} />
-                        </Grid>
-                        )
-                    )
-            }
-          </React.Fragment>
-        )}
+        {displayMatchSynopses()}
       </Grid>
     </div>
   );

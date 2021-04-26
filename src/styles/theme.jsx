@@ -8,7 +8,8 @@ export const light = {
       main: "#3ddc84",
     },
     background: {
-      default: "#f0fafb",
+      // default: "#f0fafb",
+      default: "#e5eff0",
     },
     text: {
       primary: "#073042",
