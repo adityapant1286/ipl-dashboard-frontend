@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import {BrowserRouter as Router, 
+  Route,
+  Switch } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+
+import {BK} from "./common/constants";
 
 import { light, dark } from "./styles/theme";
 import AppHeader from "./header/AppHeader";
 import Team from "./main/Team";
+import Match from "./main/Match";
 
 const lightTheme = createMuiTheme(light);
 const darkTheme = createMuiTheme(dark);
@@ -14,8 +20,8 @@ const userStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   main: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
   }
 }));
 
@@ -33,7 +39,16 @@ function App() {
         </header>
 
         <main className={classes.main}>
-          <Team />
+          <Router>
+            <Switch>
+              <Route path={`${BK.ENDPOINTS.TEAMS}/:teamName${BK.ENDPOINTS.MATCHES}/:year`}>
+                <Match />
+              </Route>
+              <Route path={`${BK.ENDPOINTS.TEAMS}/:teamName`}>
+                <Team />
+              </Route>
+            </Switch>
+          </Router>
         </main>
     </ThemeProvider>
   );

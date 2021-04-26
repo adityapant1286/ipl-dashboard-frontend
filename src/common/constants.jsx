@@ -6,6 +6,7 @@ export const BK = {
         }
     },
     ENDPOINTS: {
-        TEAMS: "/teams"
+        TEAMS: "/teams",
+        MATCHES: "/matches"
     }
 };

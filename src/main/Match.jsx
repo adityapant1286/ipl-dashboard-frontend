@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid4 } from "uuid";
 import Typography from "@material-ui/core/Typography";
-import MatchDetailsCard from "./components/MatchDetailsCard";
-import MatchSmallCard from "./components/MatchSmallCard";
 import Grid from "@material-ui/core/Grid";
 
 import { BK } from "../common/constants";
@@ -15,9 +13,9 @@ const userStyles = makeStyles((theme) => ({
   },
 }));
 
-const Team = (props) => {
+const Match = (props) => {
   const classes = userStyles();
-  const [teamData, setTeamData] = useState({});
+/*   const [teamData, setTeamData] = useState({});
 
   const { teamName } = useParams();
 
@@ -34,33 +32,16 @@ const Team = (props) => {
   }, 
   [teamName] // important: this lets navigate routes when this field change
   );
-
+ */
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
         <Grid key={uuid4()} item xs={12}>
-          <Typography variant="h3">{teamData.name}</Typography>
+          <Typography variant="h3">Match data</Typography>
         </Grid>
-        {teamData.matchSynopses && (
-          <React.Fragment>
-            <Grid key={uuid4()} item xs={12}>
-              <MatchDetailsCard teamName={teamData.name} match={teamData.matchSynopses[0]} />
-            </Grid>
-            {
-                teamData.matchSynopses
-                    .slice(1)
-                    .map((match) => (
-                        <Grid key={uuid4()} item xs={12} sm={6} md={4}>
-                            <MatchSmallCard teamName={teamData.name} match={match} />
-                        </Grid>
-                        )
-                    )
-            }
-          </React.Fragment>
-        )}
       </Grid>
     </div>
   );
 };
 
-export default Team;
+export default Match;
