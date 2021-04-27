@@ -27,7 +27,7 @@ function App() {
           <AppHeader toggleDarkMode={setDarkMode} darkMode={darkMode} />
         </header>
 
-        <main>
+        <main style={{marginBottom: '5rem'}}>
           <Container fixed>
             <Router>
               <Switch>

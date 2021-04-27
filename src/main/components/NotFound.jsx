@@ -6,9 +6,12 @@ import CardContent from "@material-ui/core/CardContent";
 
 const userStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
+    border: '0.4rem solid',
+    minHeight: '30vh',
   },
   content: {
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(5),
     marginBottom: theme.spacing(6),
 },
 }));
@@ -19,15 +22,14 @@ const NotFound = (props) => {
   return (
     <Card className={classes.root}>
       <CardContent className={classes.content}>
-        <Typography variant="h2" align="center"
-                    color="primary" 
+        <Typography variant="h2" align="center" 
                     gutterBottom>
           404
         </Typography>
-        <Typography variant="h5" align="center" color="primary">
-          The page you are looing for is not found.
+        <Typography variant="h5" align="center">
+          Data not found.
         </Typography>
-        <Typography variant="h6" align="center" color="primary">
+        <Typography variant="h5" align="center">
           Please check the URL.
         </Typography>
       </CardContent>

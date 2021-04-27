@@ -32,7 +32,7 @@ const Match = (props) => {
       const resp = await fetch(
         `${BK.HOST}${BK.ENDPOINTS.TEAMS}/${teamName}${BK.ENDPOINTS.MATCHES}?year=${year}`
       );
-      const data = await resp.json();
+      const data = await resp.json();      
       setMatchData(data || []);
     };
 
@@ -42,7 +42,7 @@ const Match = (props) => {
   );
 
   const displayMatchSynopses = () => (
-    matchData
+    matchData && matchData.length > 0
       ? matchData.map(match => (
         <Grid key={uuid4()} item xs={12} sm={6} md={4}>
           <MatchDetailsCard teamName={teamName} match={match} />
