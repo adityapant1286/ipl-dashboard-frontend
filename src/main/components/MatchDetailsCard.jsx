@@ -33,7 +33,7 @@ const userStyles = makeStyles((theme) => ({
   },
 }));
 
-const MatchDetailsCard = ({ teamName, match }) => {
+const MatchDetailsCard = ({ teamName, match, latest }) => {
   const classes = userStyles();
   const otherTeam = teamName === match.team1 ? match.team2 : match.team1;
   const otherTeamRoute = `${BK.ENDPOINTS.TEAMS}/${otherTeam}`;
@@ -42,9 +42,15 @@ const MatchDetailsCard = ({ teamName, match }) => {
   const leftContents = () => (
     <React.Fragment>
       <MatchResult isWon={isMatchWon} wonByResult={match.result} />
-      <Typography variant="body2" color="textSecondary" align="left" gutterBottom>Latest Match</Typography>
+      {
+        latest && (<Typography variant="body2" 
+                        color="textSecondary" 
+                        align="left" gutterBottom>
+                          Latest Match
+                    </Typography>)
+      }
+      <Typography variant="body2" align="left" color="textSecondary">vs</Typography>
       <Link to={otherTeamRoute} className={classes.linkRoute}>
-        vs
         <Typography variant="h5" align="left" gutterBottom>{otherTeam}</Typography>
       </Link>
       <Typography variant="body2" color="textSecondary" align="left">{match.date}</Typography>

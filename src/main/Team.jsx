@@ -49,6 +49,7 @@ const Team = (props) => {
               <MatchDetailsCard
                 teamName={teamData.name}
                 match={teamData.matchSynopses[0]}
+                latest
               />
             </Grid>
             {

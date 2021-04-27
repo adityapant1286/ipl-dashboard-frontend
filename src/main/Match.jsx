@@ -44,7 +44,7 @@ const Match = (props) => {
   const displayMatchSynopses = () => (
     matchData && matchData.length > 0
       ? matchData.map(match => (
-        <Grid key={uuid4()} item xs={12} sm={6} md={4}>
+        <Grid key={uuid4()} item xs={12}>
           <MatchDetailsCard teamName={teamName} match={match} />
         </Grid>
       ))
