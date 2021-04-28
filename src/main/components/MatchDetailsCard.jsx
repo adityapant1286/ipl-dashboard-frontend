@@ -55,7 +55,7 @@ const MatchDetailsCard = ({ teamName, match, latest }) => {
       </Link>
       <Typography variant="body2" color="textSecondary" align="left">{match.date}</Typography>
       <Typography variant="body2" color="textSecondary" align="left">at {match.venue}</Typography>
-      <Typography variant="h6" align="left" className={classes.mt3}>
+      <Typography variant="subtitle2" align="left" className={classes.mt3}>
         {match.winner} won by {match.resultMargin} {match.result}
       </Typography>
     </React.Fragment>

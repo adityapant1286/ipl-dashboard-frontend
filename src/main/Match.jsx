@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import { BK } from "../common/constants";
 import MatchDetailsCard from "./components/MatchDetailsCard";
 import NotFound from "./components/NotFound";
+import YearSelector from "./components/YearSelector";
 
 const userStyles = makeStyles((theme) => ({
   root: {
@@ -42,22 +43,30 @@ const Match = (props) => {
   );
 
   const displayMatchSynopses = () => (
-    matchData && matchData.length > 0
-      ? matchData.map(match => (
-        <Grid key={uuid4()} item xs={12}>
-          <MatchDetailsCard teamName={teamName} match={match} />
-        </Grid>
-      ))
-      : <NotFound />
+    <React.Fragment key={uuid4()}>
+      <Grid key={uuid4()} item xs={12}>
+        <Typography variant="h4" align="left">{teamName} matches in {year}</Typography>
+      </Grid>
+      { matchData && matchData.length > 0
+        ? matchData.map(match => (
+          <Grid key={uuid4()} item xs={12}>
+            <MatchDetailsCard teamName={teamName} match={match} />
+          </Grid>
+        ))
+        : <NotFound />
+      }
+    </React.Fragment>
   );
 
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
-        <Grid key={uuid4()} item xs={12}>
-          <Typography variant="h3">Match data</Typography>
-        </Grid>        
-        {displayMatchSynopses()}
+        <Grid key={uuid4()} container spacing={2} item xs={12} sm={2}>
+          <YearSelector teamName={teamName} />
+        </Grid>
+        <Grid key={uuid4()} container spacing={2} item xs={12} sm={10}>
+          {displayMatchSynopses()}
+        </Grid>
       </Grid>
     </div>
   );

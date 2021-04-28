@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid4 } from "uuid";
 import MatchDetailsCard from "./components/MatchDetailsCard";
@@ -19,8 +19,14 @@ const userStyles = makeStyles((theme) => ({
   moreGrid: {
     margin: "auto",
     textAlign: "center",
+  },  
+  linkRoute: {
+    textDecoration: "none",
+    color: theme.palette.primary.main,
   },
 }));
+
+const endYear = process.env.REACT_APP_DATA_END_YEAR;
 
 const Team = (props) => {
   const classes = userStyles();
@@ -75,12 +81,14 @@ const Team = (props) => {
         <Grid key={uuid4()} item
           xs={12} sm={6} md={3} className={classes.moreGrid}
         >
-          <Button size="large" color="primary"
-            endIcon={<DoubleArrowIcon />}
-            href="#"
-          >
-            More
-          </Button>
+          <Link key={uuid4()} className={classes.linkRoute}
+            to={`${BK.ENDPOINTS.TEAMS}/${teamName}${BK.ENDPOINTS.MATCHES}?year=${endYear}`}>
+            <Button size="large" color="primary" key={uuid4()}
+              endIcon={<DoubleArrowIcon />}
+            >
+              More
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     </div>
