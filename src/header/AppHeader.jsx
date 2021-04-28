@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,6 +12,10 @@ const userStyles = makeStyles((theme) => ({
     marginLeft: "auto",
     marginRight: theme.spacing(2),
     // color: theme.palette.primary.main,
+  },
+  linkRoute: {
+    textDecoration: "none",
+    color: theme.palette.text.primary,
   },
 }));
 
@@ -25,8 +30,9 @@ const AppHeader = (props) => {
     <React.Fragment>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
-          <Typography variant="h5">IPL Dashboard</Typography>
-
+          <Link to="/" className={classes.linkRoute}>
+            <Typography variant="h5">IPL Dashboard</Typography>
+          </Link>
           <IconButton
             edge="end"
             onClick={toggleTheme}

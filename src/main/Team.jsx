@@ -36,13 +36,13 @@ const Team = (props) => {
 
   useEffect(
     () => {
-      const fetchMatches = async () => {
+      const fetchTeamData = async () => {
         const resp = await fetch(`${BK.HOST}${BK.ENDPOINTS.TEAMS}/${teamName}`);
         const data = await resp.json();
         setTeamData(data || {});
       };
 
-      fetchMatches();
+      fetchTeamData();
     },
     [teamName] // important: this lets navigate routes when this field change
   );

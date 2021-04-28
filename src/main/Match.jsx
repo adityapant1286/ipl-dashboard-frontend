@@ -14,6 +14,9 @@ const userStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  heightFit: {
+    height: 'fit-content',
+  },
 }));
 
 const useQuery = () => new URLSearchParams(useLocation().search);
@@ -60,11 +63,13 @@ const Match = (props) => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={2}>
-        <Grid key={uuid4()} container spacing={2} item xs={12} sm={2}>
+      <Grid container spacing={4}>
+        <Grid key={uuid4()} container item xs={12} sm={2}>
           <YearSelector teamName={teamName} />
         </Grid>
-        <Grid key={uuid4()} container spacing={2} item xs={12} sm={10}>
+        <Grid key={uuid4()} container spacing={2} 
+              className={classes.heightFit}
+              item xs={12} sm={10}>
           {displayMatchSynopses()}
         </Grid>
       </Grid>

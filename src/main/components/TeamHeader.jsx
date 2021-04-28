@@ -19,9 +19,9 @@ const TeamHeader = ({team}) => {
     const classes = userStyles();
 
     return (
-        <Card className={classes.root}>
-            <CardContent>
-                <Grid container alignItems="center">
+        <Card key={uuid4()} className={classes.root}>
+            <CardContent key={uuid4()}>
+                <Grid key={uuid4()} container alignItems="center">
                     <Grid key={uuid4()} item xs={12} sm={9}>
                         <Typography variant="h2" align="left">{team.name}</Typography>
                     </Grid>
